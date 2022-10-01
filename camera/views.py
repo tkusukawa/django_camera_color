@@ -43,17 +43,21 @@ def read(request):
     #b = imgBox.T[0].flatten().mean()
     #g = imgBox.T[1].flatten().mean()
     #r = imgBox.T[2].flatten().mean()
-    b = raw_img[y, x, :][0]
-    g = raw_img[y, x, :][1]
-    r = raw_img[y, x, :][2]
+    b = int(raw_img[y, x, :][0])
+    g = int(raw_img[y, x, :][1])
+    r = int(raw_img[y, x, :][2])
     print([r,g,b])
  
     #画像を保存する場合
     cv2.imwrite("image.jpg",raw_img)
 
+    color = '#'+f'{((r*256)+g)*256+b:06x}'
+    print(color)
+
     d = {
         'r': r,
         'g': g,
         'b': b,
+        'color': color,
     }
     return JsonResponse(d)

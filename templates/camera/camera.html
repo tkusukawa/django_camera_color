@@ -106,7 +106,9 @@
                 headers: { "X-CSRFToken": csrf_token },
                 data: {image: data}
             }).then(res => {
-                $('#readStr').val(res['r']+','+res['g']+','+res['b'])
+                $('#readStr').val('R'+res['r']+', G'+res['g']+', B'+res['b'])
+                //$('#readStr').style.backgroundColor = res['color']
+                $('#readStr').css('background-color', res['color'])
             })
         }
 
